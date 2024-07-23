@@ -1,8 +1,8 @@
 {
-  "name": "kumbia/doku",
-  "description": "Doku is an innovative web application designed for the visualization and management of manuals, allowing the download and conversion of Markdown files to HTML for an intuitive reading experience.",
+  "name": "kumbia/dokum",
+  "description": "Dokum is an innovative web application designed for the visualization and management of manuals, allowing the download and conversion of Markdown files to HTML for an intuitive reading experience.",
   "keywords": [
-    "Doku",
+    "Dokum",
     "manual viewer",
     "Markdown to HTML conversion",
     "manual management",
