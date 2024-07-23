@@ -1,0 +1,16 @@
+/vendor
+/composer.lock
+
+# temp
+/app/temp/*
+
+# custom configs
+phpunit.xml
+
+# IDEs
+.vscode/
+.idea/
+/nbproject
+
+# Mac filesystem dust
+.DS_Store
