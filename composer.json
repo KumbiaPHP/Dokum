@@ -1,0 +1,52 @@
+{
+  "name": "kumbia/doku",
+  "description": "Doku is an innovative web application designed for the visualization and management of manuals, allowing the download and conversion of Markdown files to HTML for an intuitive reading experience.",
+  "keywords": [
+    "Doku",
+    "manual viewer",
+    "Markdown to HTML conversion",
+    "manual management",
+    "web application for manuals",
+    "manual navigation",
+    "HTML formatted manuals",
+    "manual comments",
+    "manual search",
+    "online manuals",
+    "KumbiaPHP",
+    "manual platform"
+  ],
+  "type": "project",
+  "homepage": "https://kumbiaphp.com",
+  "support": {
+    "issues": "https://github.com/KumbiaPHP/doku/issues",
+    "slack": "https://slack.kumbiaphp.com"
+  },
+  "authors": [
+    {
+      "name": "Kumbia Community",
+      "homepage": "https://github.com/KumbiaPHP/doku/graphs/contributors"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "kumbia/framework": "^1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "funding": [
+    {
+      "type": "Open Collective",
+      "url": "https://opencollective.com/kumbiaphp"
+    }
+  ]
+}
