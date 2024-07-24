@@ -54,7 +54,7 @@ const PRODUCTION = false;
  * - Esta ruta se utiliza para cargar los archivos de la aplicacion
  * - En producción, es recomendable ponerla manual usando const
  */
-const APP_PATH = '../app/';
+const APP_PATH = '/mnt/230f9050-e8e7-4bcb-abc0-a7dd5e11b84e/dev/KumbiaPHP/forks/doku/dokum/app/';
 
 /*
  * Define el CORE_PATH
