@@ -18,17 +18,19 @@
   "type": "project",
   "homepage": "https://kumbiaphp.com",
   "support": {
-    "issues": "https://github.com/KumbiaPHP/doku/issues",
+    "issues": "https://github.com/KumbiaPHP/dokum/issues",
     "slack": "https://slack.kumbiaphp.com"
   },
   "authors": [
     {
       "name": "Kumbia Community",
-      "homepage": "https://github.com/KumbiaPHP/doku/graphs/contributors"
+      "homepage": "https://github.com/KumbiaPHP/dokum/graphs/contributors"
     }
   ],
   "require": {
     "php": ">=8.0",
+    "ext-zip": "*",
+    "erusev/parsedown": "^1.7",
     "kumbia/framework": "^1"
   },
   "require-dev": {
