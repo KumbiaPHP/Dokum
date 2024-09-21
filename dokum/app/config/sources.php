@@ -6,6 +6,6 @@ return [
         'tags' => [
             'v.0.4.x-alpha'
         ],
-        'token' => 'you-token'
+        'token' => 'your-token'
     ]
 ];
