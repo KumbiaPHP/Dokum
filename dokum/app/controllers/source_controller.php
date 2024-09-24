@@ -1,13 +1,12 @@
 <?php
 
-use Dokum\libs\VersionControl\VersionControlFactory;
-use Dokum\models\BranchDownloader;
+use Dokum\models\SourceManager;
 
 class SourceController extends AppController
 {
     /**
      * Executes before any action in the controller.
-     * 
+     *
      * This method starts a new session or resumes an existing one.
      *
      * @return void
@@ -40,27 +39,11 @@ class SourceController extends AppController
      * each one using the appropriate version control system.
      *
      * @return void
+     * @throws KumbiaException
      */
     public function downloadAll(): void
     {
-        // Get all sources from the configuration
-        $sources = Config::get('sources');
-
-        foreach ($sources as $sourceName => $sourceConfig) {
-            // Initialize the appropriate VersionControl class based on the URL
-            $versionControl = VersionControlFactory::createFromUrl($sourceConfig['url']);
-
-            foreach ($sourceConfig['tags'] as $tag) {
-                try {
-                    $branchDownloader = new BranchDownloader($versionControl);
-                    $branchDownloader->execute($sourceConfig['url'], $tag, $sourceName, $sourceConfig['token'] ?? null);
-
-                    Flash::valid("Successfully downloaded: {$sourceName} - {$sourceConfig['url']}:{$tag}");
-                } catch (Exception $e) {
-                    Flash::error("Error downloading {$sourceName} - {$tag}: " . $e->getMessage());
-                }
-            }
-        }
+        SourceManager::downloadAll();
 
         Redirect::toAction('index');
     }
@@ -73,30 +56,11 @@ class SourceController extends AppController
      *
      * @param string $sourceName The name of the source to download
      * @return void
+     * @throws KumbiaException
      */
     public function download(string $sourceName): void
     {
-        $sources = Config::get('sources');
-
-        if (!isset($sources[$sourceName])) {
-            Flash::error("Source '{$sourceName}' not found.");
-            Redirect::toAction('index');
-            return;
-        }
-
-        $sourceConfig = $sources[$sourceName];
-        $versionControl = VersionControlFactory::createFromUrl($sourceConfig['url']);
-
-        foreach ($sourceConfig['tags'] as $tag) {
-            try {
-                $branchDownloader = new BranchDownloader($versionControl);
-                $branchDownloader->execute($sourceConfig['url'], $tag, $sourceName, $sourceConfig['token'] ?? null);                
-
-                Flash::valid("Successfully downloaded: {$sourceName} - {$sourceConfig['url']}:{$tag}");
-            } catch (Exception $e) {
-                Flash::error("Error downloading {$sourceName} - {$tag}: " . $e->getMessage());
-            }
-        }
+        SourceManager::downloadBySource(urldecode($sourceName));
 
         Redirect::toAction('index');
     }

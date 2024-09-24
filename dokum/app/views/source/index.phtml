@@ -27,7 +27,7 @@ if (!empty($sources) && is_array($sources)){
                     </a>
                 </td>
                 <td><?= implode(', ', array_map('htmlspecialchars', $source['tags'])); ?></td>
-                <td><?= Html::linkAction('download/' . htmlspecialchars($key), 'Download', 'class="btn btn-primary"'); ?></td>
+                <td><?= Html::linkAction('download/' . urlencode(htmlspecialchars($key)), 'Download', 'class="btn btn-primary"'); ?></td>
             </tr>
         <?php } ?>
         </tbody>
