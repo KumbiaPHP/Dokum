@@ -15,15 +15,11 @@ abstract class ArchiveExtractor
     {
         $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
 
-        switch ($extension) {
-            case 'zip':
-                return new ZipArchiveExtractor();
-            case 'gz':
-            case 'tar':
-                return new TarArchiveExtractor();
-            default:
-                throw new \InvalidArgumentException("Unsupported file type: $extension");
-        }
+        return match($extension) {
+            'zip'       => new ZipArchiveExtractor(),
+            'gz', 'tar' => new ZipArchiveExtractor(),
+            default => throw new \InvalidArgumentException("Unsupported file type: $extension"),
+        };
     }
 
     /**
@@ -37,15 +33,12 @@ abstract class ArchiveExtractor
     {
         $mimeType = self::getMimeType($fileContent);
 
-        switch ($mimeType) {
-            case 'application/zip':
-                return new ZipArchiveExtractor();
-            case 'application/x-gzip':
-            case 'application/x-tar':
-                return new TarArchiveExtractor();
-            default:
-                throw new \InvalidArgumentException("Unsupported MIME type: $mimeType");
-        }
+        return match($mimeType) {
+            'application/zip'     => new ZipArchiveExtractor(),
+            'application/x-gzip',
+            'application/x-tar'   => new TarArchiveExtractor(),
+            default => throw new \InvalidArgumentException("Unsupported MIME type: $mimeType"),
+        };
     }
 
     /**
