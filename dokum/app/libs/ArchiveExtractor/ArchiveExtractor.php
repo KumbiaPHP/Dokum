@@ -17,7 +17,7 @@ abstract class ArchiveExtractor
 
         return match($extension) {
             'zip'       => new ZipArchiveExtractor(),
-            'gz', 'tar' => new ZipArchiveExtractor(),
+            'gz', 'tar' => new TarArchiveExtractor(),
             default => throw new \InvalidArgumentException("Unsupported file type: $extension"),
         };
     }
