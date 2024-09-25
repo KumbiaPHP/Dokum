@@ -15,8 +15,8 @@ class VersionControlFactory
      */
     public static function createFromUrl(string $url): VersionControlInterface
     {
-        $host = strtolower(parse_url($url, PHP_URL_HOST));
-
+        $host = str_replace('www.', '', strtolower(parse_url($url, PHP_URL_HOST)));
+        
         return match($host) {
             'github.com' => new Adapters\Github(),
             'gitlab.com' => new Adapters\Gitlab(),
