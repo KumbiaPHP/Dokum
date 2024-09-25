@@ -97,6 +97,11 @@ $url = $_SERVER['PATH_INFO'] ?? '/';
  //$url = $_GET['_url'] ?? '/';
 
 /**
+ * Require Composer's autoloader
+ */
+require '../vendor/autoload.php';
+
+/**
  * Carga el gestor de arranque
  * Por defecto el bootstrap del core.
  *

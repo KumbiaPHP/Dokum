@@ -1,0 +1,37 @@
+<?php
+
+if (!empty($sources) && is_array($sources)){ 
+    
+    echo Html::linkAction('downloadAll', 'Download All', 'class="btn btn-primary"');
+    ?>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Branches</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($sources as $key => $source) { ?>
+            <tr>
+                <td><?= htmlspecialchars($key); ?></td>                
+                <td>
+                    <a
+                        href="<?= htmlspecialchars($source['url']); ?>"
+                        target="_blank"
+                        title="Source of <?= htmlspecialchars($key); ?>">
+                        <?= htmlspecialchars($source['url']); ?>
+                    </a>
+                </td>
+                <td><?= implode(', ', array_map('htmlspecialchars', $source['tags'])); ?></td>
+                <td><?= Html::linkAction('download/' . urlencode(htmlspecialchars($key)), 'Download', 'class="btn btn-primary"'); ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
+<?php } else { ?>
+    <p>No sources found.</p>
+<?php } ?>
