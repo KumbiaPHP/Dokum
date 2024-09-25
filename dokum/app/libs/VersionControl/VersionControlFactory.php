@@ -19,12 +19,12 @@ class VersionControlFactory
      */
     public static function createFromUrl(string $url): VersionControlInterface
     {
-        if (str_contains($url, 'github.com')) {
-            return new Adapters\Github();
-        } elseif (str_contains($url, 'gitlab.com')) {
-            return new Adapters\Gitlab();
-        }
-        
-        throw new Exceptions\UnrecognizedSourceException($url);
+        $host = strtolower(parse_url($url, PHP_URL_HOST));
+
+        return match($host) {
+            'github.com' => new Adapters\Github(),
+            'gitlab.com' => new Adapters\Gitlab(),
+            default => throw new Exceptions\UnrecognizedSourceException($url),
+        };
     }
 }
