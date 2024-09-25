@@ -1,10 +1,10 @@
 <?php
+if (!is_array($sources ?? null)) { 
+    echo '<p>No sources found.</p>';
+    return 1;
+?>
 
-if (!empty($sources) && is_array($sources)){ 
-    
-    echo Html::linkAction('downloadAll', 'Download All', 'class="btn btn-primary"');
-    ?>
-
+<?= Html::linkAction('downloadAll', 'Download All', 'class="btn btn-primary"') ?> 
 
     <table>
         <thead>
@@ -15,7 +15,7 @@ if (!empty($sources) && is_array($sources)){
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($sources as $key => $source) { ?>
+<?php foreach ($sources as $key => $source) : ?> 
             <tr>
                 <td><?= htmlspecialchars($key); ?></td>                
                 <td>
@@ -32,6 +32,5 @@ if (!empty($sources) && is_array($sources)){
         <?php } ?>
         </tbody>
     </table>
-<?php } else { ?>
-    <p>No sources found.</p>
-<?php } ?>
+<?php endforeach ?> 
+
