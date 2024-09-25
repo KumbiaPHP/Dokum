@@ -1,7 +1,8 @@
 <?php
-if (!is_array($sources ?? null)) { 
+if (!is_array($sources ?? null)) {
     echo '<p>No sources found.</p>';
     return 1;
+}
 ?>
 
 <?= Html::linkAction('downloadAll', 'Download All', 'class="btn btn-primary"') ?> 
@@ -15,9 +16,9 @@ if (!is_array($sources ?? null)) {
         </tr>
         </thead>
         <tbody>
-<?php foreach ($sources as $key => $source) : ?> 
+<?php foreach ($sources as $key => $source) : ?>
             <tr>
-                <td><?= htmlspecialchars($key); ?></td>                
+                <td><?= htmlspecialchars($key); ?></td>
                 <td>
                     <a
                         href="<?= htmlspecialchars($source['url']); ?>"
@@ -29,8 +30,6 @@ if (!is_array($sources ?? null)) {
                 <td><?= implode(', ', array_map('htmlspecialchars', $source['tags'])); ?></td>
                 <td><?= Html::linkAction('download/' . urlencode(htmlspecialchars($key)), 'Download', 'class="btn btn-primary"'); ?></td>
             </tr>
-        <?php } ?>
+<?php endforeach ?>
         </tbody>
     </table>
-<?php endforeach ?> 
-
