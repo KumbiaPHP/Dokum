@@ -12,10 +12,6 @@ class VersionControlFactory
      * Detects the source (GitHub or GitLab) and returns the appropriate class instance.
      *
      * @param string $url The repository URL
-     *
-     * @return VersionControlInterface The appropriate class instance
-     * @throws Exception If the source is not recognized
-     * @throws UnrecognizedSourceException If the adapter for service does not found
      */
     public static function createFromUrl(string $url): VersionControlInterface
     {
